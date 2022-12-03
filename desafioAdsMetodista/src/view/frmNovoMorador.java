@@ -4,6 +4,10 @@
  */
 package view;
 
+import controller.daoMorador;
+import javax.swing.JOptionPane;
+import model.Morador;
+
 /**
  *
  * @author diego
@@ -66,6 +70,11 @@ public class frmNovoMorador extends javax.swing.JInternalFrame {
 
         btnSalvar.setText("Salvar");
         btnSalvar.setBorderPainted(false);
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         try {
             txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) #####-####")));
@@ -147,6 +156,22 @@ public class frmNovoMorador extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        Morador m = new Morador();
+        m.setNome(txtNome.getText());
+        m.setCpf(txtCpf.getText());
+        m.setEndereco(txtEndereco.getText());
+        m.setCidade(txtCidade.getText());
+        m.setTelefone(txtTelefone.getText());
+        m.setEmail(txtEmail.getText());
+        
+        daoMorador dao = new daoMorador();
+        dao.gravar(m);
+        JOptionPane.showMessageDialog(null, "Morador Cadastrado.");
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

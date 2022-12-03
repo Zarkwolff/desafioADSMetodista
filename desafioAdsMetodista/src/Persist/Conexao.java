@@ -13,7 +13,7 @@ public class Conexao {
         try{
             String servidor = "jdbc:mysql://localhost:3306/condominio";
             String user = "root";
-            String pass = "P@lwe1r@$";
+            String pass = "";
             
             return DriverManager.getConnection(servidor, user, pass);
         }
