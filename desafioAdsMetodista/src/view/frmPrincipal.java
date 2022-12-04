@@ -41,10 +41,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         setTitle("Moradores");
         setMaximumSize(new java.awt.Dimension(1024, 780));
         setMinimumSize(new java.awt.Dimension(640, 500));
-        setPreferredSize(new java.awt.Dimension(640, 500));
+        setPreferredSize(new java.awt.Dimension(1024, 780));
         getContentPane().setLayout(new java.awt.GridLayout(1, 3));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/condominio.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/moradores_bg.png"))); // NOI18N
         jLabel1.setToolTipText("");
 
         jPrincipal.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -54,16 +54,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         jPrincipalLayout.setHorizontalGroup(
             jPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPrincipalLayout.createSequentialGroup()
-                .addGap(255, 255, 255)
                 .addComponent(jLabel1)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPrincipalLayout.setVerticalGroup(
             jPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPrincipalLayout.createSequentialGroup()
-                .addGap(144, 144, 144)
                 .addComponent(jLabel1)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPrincipal);
@@ -106,6 +104,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         mnConsulta.setText("Consulta");
 
+        mnConsultaMoradores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnConsultaMoradores.setText("Moradores");
         mnConsultaMoradores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
