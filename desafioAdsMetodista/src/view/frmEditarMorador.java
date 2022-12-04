@@ -4,6 +4,10 @@
  */
 package view;
 
+import controller.daoMorador;
+import javax.swing.JOptionPane;
+import model.Morador;
+
 /**
  *
  * @author diego
@@ -13,6 +17,10 @@ public class frmEditarMorador extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmEditarMorador
      */
+    
+    Morador m = new Morador();
+    daoMorador dao = new daoMorador();
+    
     public frmEditarMorador() {
         initComponents();
     }
@@ -70,10 +78,25 @@ public class frmEditarMorador extends javax.swing.JInternalFrame {
         }
 
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         try {
             txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) #####-####")));
@@ -167,6 +190,60 @@ public class frmEditarMorador extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+        m.setIdMorador(Integer.parseInt(txtIdMorador.getText()));
+        dao.consultar(m);
+        
+        txtNome.setText(m.getNome());
+        txtCpf.setText(m.getCpf());
+        txtEndereco.setText(m.getEndereco());
+        txtCidade.setText(m.getCidade());
+        txtTelefone.setText(m.getTelefone());
+        txtEmail.setText(m.getEmail());
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        Morador m = new Morador();
+        m.setIdMorador(Integer.parseInt(txtIdMorador.getText()));
+        m.setNome(txtNome.getText());
+        m.setCpf(txtCpf.getText());
+        m.setEndereco(txtEndereco.getText());
+        m.setCidade(txtCidade.getText());
+        m.setTelefone(txtTelefone.getText());
+        m.setEmail(txtEmail.getText());
+        
+        daoMorador dao = new daoMorador();
+        dao.alterar(m);
+        JOptionPane.showMessageDialog(null, "Registro editado"
+                + " com sucesso!");
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        Morador m = new Morador();
+        m.setIdMorador(Integer.parseInt(txtIdMorador.getText()));
+        
+        //Acionando a ação de exclusão no banco
+        daoMorador dao = new daoMorador();
+        dao.deletar(m);
+        
+        //Limpando os campos
+        txtNome.setText("");
+        txtCpf.setText("");
+        txtEndereco.setText("");
+        txtCidade.setText("");
+        txtTelefone.setText("");
+        txtEmail.setText("");
+        
+        //Apresentando mensagem de confirmação
+        JOptionPane.showMessageDialog(null, "Registro "
+                + "excluído com sucesso!");
+        
+       
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

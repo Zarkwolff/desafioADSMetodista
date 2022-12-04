@@ -45,6 +45,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridLayout(1, 3));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/condominio.png"))); // NOI18N
+        jLabel1.setToolTipText("");
 
         jPrincipal.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -53,16 +54,16 @@ public class frmPrincipal extends javax.swing.JFrame {
         jPrincipalLayout.setHorizontalGroup(
             jPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPrincipalLayout.createSequentialGroup()
-                .addGap(233, 233, 233)
+                .addGap(255, 255, 255)
                 .addComponent(jLabel1)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
         jPrincipalLayout.setVerticalGroup(
             jPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPrincipalLayout.createSequentialGroup()
-                .addGap(112, 112, 112)
+                .addGap(144, 144, 144)
                 .addComponent(jLabel1)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPrincipal);
