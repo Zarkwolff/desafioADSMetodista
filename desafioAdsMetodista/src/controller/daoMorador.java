@@ -6,6 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Morador;
 
@@ -109,6 +113,38 @@ public class daoMorador {
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
+    }
+    
+    public List<Morador> listar(){
+        String sql = "SELECT * FROM morador";
+        
+         List<Morador> moradores = new ArrayList<>();
+        
+        try {
+            PreparedStatement smt = con.prepareStatement(sql);
+            
+            ResultSet rs = smt.executeQuery();
+            
+            while(rs.next()){
+                
+                Morador m = new Morador();
+                
+                m.setIdMorador(rs.getInt("idMorador"));
+                m.setNome(rs.getString("nome"));
+                m.setCpf(rs.getString("cpf"));
+                m.setEndereco(rs.getString("endereço"));
+                m.setCidade(rs.getString("cidade"));
+                m.setTelefone(rs.getString("telefone"));
+                m.setEmail(rs.getString("email"));
+                
+                moradores.add(m);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao pesquisar "
+                    + "por moradores" + ex);
+        }
+        
+        return moradores;
     }
     
 }

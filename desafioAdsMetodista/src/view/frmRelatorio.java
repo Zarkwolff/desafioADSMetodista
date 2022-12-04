@@ -4,6 +4,10 @@
  */
 package view;
 
+import controller.daoMorador;
+import javax.swing.table.DefaultTableModel;
+import model.Morador;
+
 /**
  *
  * @author diego
@@ -15,6 +19,27 @@ public class frmRelatorio extends javax.swing.JInternalFrame {
      */
     public frmRelatorio() {
         initComponents();
+        
+    }
+    
+    public void lerTabela(){
+        DefaultTableModel modelo = (DefaultTableModel) tbMoradores.getModel();
+        daoMorador dao = new daoMorador();
+        modelo.setNumRows(0);
+        
+        for(Morador m: dao.listar()){
+            modelo.addRow(new Object[]{
+                m.getIdMorador(),
+                m.getNome(),
+                m.getCpf(),
+                m.getEndereco(),
+                m.getCidade(),
+                m.getTelefone(),
+                m.getEmail()
+            });
+        }
+        
+        
     }
 
     /**
@@ -57,6 +82,11 @@ public class frmRelatorio extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tbMoradores);
 
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,6 +113,11 @@ public class frmRelatorio extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+        lerTabela();
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
